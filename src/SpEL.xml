@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="car" class="class6.Car">
+        <property name="carName" value="Audi"/>
+        <property name="price" value="300000"/>
+<!--        在SpEL中使用T()方法引入静态方法-->
+        <property name="typePerimeter" value="#{T(java.lang.Math).PI * 80 }" />
+    </bean>
+
+    <bean id="address" class="class6.Address">
+<!--        使用SpEL进行赋值-->
+        <property name="city" value="#{'BeiJing'}"/>
+        <property name="street" value="#{'WuDaoKou'}"/>
+    </bean>
+
+
+    <bean id="person" class="class6.Person">
+        <property name="name" value="Tom"/>
+<!--        使用SpEL引入其他对象的属性-->
+        <property name="city" value="#{address.city}"/>
+        <property name="car" ref="car"/>
+        <property name="address" value="#{address}"/>
+<!--        在SpEL中使用if-else进行判断-->
+        <property name="info" value="#{car.price > 300000? '金领' : '白领'}"/>
+    </bean>
+
+
+
+</beans>

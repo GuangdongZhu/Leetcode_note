@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    构造方法属性注入-->
+    <bean id="car" class="class2.Car">
+        <constructor-arg value="Audi" index="0"></constructor-arg>
+        <constructor-arg type="java.lang.String">
+            <value><![CDATA[<ShangHai>]]]></value>
+        </constructor-arg>
+        <constructor-arg value="100000" type="java.lang.Double"></constructor-arg>
+        <constructor-arg value="180" type="int"></constructor-arg>
+    </bean>
+
+    <bean id="car2" class="class2.Car">
+        <constructor-arg value="Bens" index="0"></constructor-arg>
+        <constructor-arg type="java.lang.String">
+            <value><![CDATA[<ShangHai>]]]></value>
+        </constructor-arg>
+        <constructor-arg value="300000" type="java.lang.Double"></constructor-arg>
+        <constructor-arg value="220" type="int"></constructor-arg>
+    </bean>
+
+    <bean id="car3" class="class2.Car">
+        <constructor-arg value="BWM" index="0"></constructor-arg>
+        <constructor-arg type="java.lang.String">
+            <value><![CDATA[<ShangHai>]]]></value>
+        </constructor-arg>
+        <constructor-arg value="200000" type="java.lang.Double"></constructor-arg>
+        <constructor-arg value="200" type="int"></constructor-arg>
+    </bean>
+
+
+<!--    引用外部bean-->
+    <bean id="person" class="class2.Person">
+        <property name="name" value="Tom"/>
+        <property name="age" value="22"/>
+        <property name="car" ref="car"/>
+
+<!--   内部bean-->
+<!--        <property name="car">-->
+<!--            <bean class="class2.Car">-->
+<!--                <constructor-arg value="Ford" />-->
+<!--                <constructor-arg value="XiAn" />-->
+<!--                <constructor-arg><null></null></constructor-arg>-->
+<!--                <constructor-arg value="240" />-->
+<!--            </bean>-->
+<!--        </property>-->
+    </bean>
+
+<!--    级联属性注入-->
+    <bean id="persons" class="class2.Person">
+        <constructor-arg value="jack"/>
+        <constructor-arg value="18"/>
+        <constructor-arg ref="car"/>
+        <property name="car.maxSpeed" value="120"/>
+    </bean>
+
+
+<!--    集合属性注入-->
+<!--    <bean id="person3" class="class2.Person_2">-->
+<!--    <property name="name" value="Jerry"/>-->
+<!--    <property name="age" value="20"/>-->
+<!--    <property name="car">-->
+<!--        <list>-->
+<!--            <ref bean="car"/>-->
+<!--            <ref bean="car2"/>-->
+<!--            <ref bean="car3"/>-->
+<!--        </list>-->
+<!--    </property>-->
+<!--</bean>-->
+
+<!--    map属性注入-->
+    <bean id="person4" class="class2.Person_2">
+        <property name="name" value="Rose"/>
+        <property name="age" value="28"/>
+        <property name="car">
+            <map>
+                <entry key="AAA" value-ref="car"/>
+                <entry key="BBB" value-ref="car2"/>
+            </map>
+        </property>
+    </bean>
+
+
+<!--    Properties属性注入-->
+    <bean id="dataSource" class="class2.DataSource">
+        <property name="properties">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="password">123456</prop>
+                <prop key="JDBCURL">jdbc:mysql//testLink</prop>
+                <prop key="dirveClass">com.mysql.jdbc.Driver</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <bean id="address1" class=""
+
+
+
+</beans>

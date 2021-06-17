@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+<!--    原始方法-->
+<!--    <bean id="address" class="class4.Address" p:city="BeiJing" p:street="xixixi"/>-->
+<!--    <bean id="address2" class="class4.Address" p:city="BeiJing" p:street="wudaokou"/>-->
+
+<!--    使用parent方法进行继承 父类bean其中的方法可以重写-->
+<!--    <bean id="address" class="class4.Address" p:city="BeiJing" p:street="xixixi"/>-->
+<!--    <bean id="address2" class="class4.Address" p:street="wudaokou" parent="address"/>-->
+
+<!--    父类bean的abstract为true时为抽象bean，不可实例化，否则会报错-->
+<!--    <bean id="address" class="class4.Address" p:city="BeiJing" p:street="xixixi" abstract="true"/>-->
+<!--    <bean id="address2" class="class4.Address" p:street="wudaokou" parent="address"/>-->
+
+<!--    若父类bean不加class，则必须加上abstract=true，否则报错-->
+    <bean id="address" abstract="true"/>
+    <bean id="address2" class="class4.Address" p:street="wudaokou" parent="address"/>
+
+<!--    <bean id="car" class="class4.Car" p:carname="Audi" p:price="300000" p:maxSpeed="180"/>-->
+
+    <bean id="person" class="class4.Person" p:name="Tom" p:address-ref="address2"  p:car-ref="car" depends-on="car"/>
+
+</beans>
