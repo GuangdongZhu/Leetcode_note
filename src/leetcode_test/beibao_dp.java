@@ -52,7 +52,6 @@ public class beibao_dp {
 
         //65有效数字
 //        boolean res = s.isNumber()
-    System.out.println("sss");
     }
 }
 class Solution_2{
